@@ -72,12 +72,14 @@
                 const button = form.querySelector('.status-btn');
                 const token = form.querySelector('input[name="_token"]').value;
                 const url = form.action;
+                button.disabled = true;
 
                 fetch(url, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'X-CSRF-TOKEN': token,
+                            'Accept': 'application/json',
                             'X-Requested-With': 'XMLHttpRequest'
                         },
                         body: '_token=' + encodeURIComponent(token) + '&_method=DELETE'
@@ -87,10 +89,11 @@
                             throw new Error('เกิดข้อผิดพลาด');
                         }
 
-                        return response.text();
+                        return response.json();
                     })
-                    .then(() => {
-                        if (button.textContent.trim() === 'เผยแพร่') {
+                    .then(data => {
+                        if (!data.success) throw new Error('ไม่สามารถบันทึกสถานะได้');
+                        if (data.status === 'inactive') {
                             button.textContent = 'ไม่เผยแพร่';
                             button.classList.remove('btn-outline-success');
                             button.classList.add('btn-outline-danger');
@@ -103,6 +106,9 @@
                     .catch(error => {
                         alert('ไม่สามารถเปลี่ยนสถานะได้');
                         console.error(error);
+                    })
+                    .finally(() => {
+                        button.disabled = false;
                     });
             });
         });

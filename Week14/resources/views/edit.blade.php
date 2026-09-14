@@ -23,7 +23,7 @@
 
         <div class="mb-3">
             <label class="form-label">เนื้อหาบทความ</label>
-            <textarea name="content" class="form-control" rows="6">{{ old('content', $blog->content) }}</textarea>
+            <textarea id="content" name="content" class="form-control" rows="6">{{ old('content', $blog->content) }}</textarea>
 
             @error('content')
                 <div class="text-danger">{{ $message }}</div>

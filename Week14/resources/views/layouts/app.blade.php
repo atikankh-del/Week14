@@ -103,6 +103,41 @@
             </div>
         </main>
     </div>
+    @if (request()->routeIs('form', 'book.edit'))
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+        <script>
+            $(function () {
+                const editor = $('#content');
+                if (!editor.length || !$.fn.summernote) return;
+                editor.summernote({
+                    placeholder: 'เขียนเนื้อหาบทความที่นี่...',
+                    tabsize: 2,
+                    height: 250,
+                    // Keep dialogs above the backdrop, outside the theme's filtered container.
+                    dialogsInBody: true,
+                    callbacks: {
+                        onPaste: function (e) {
+                            const clipboard = (e.originalEvent || e).clipboardData;
+                            if (!clipboard) return;
+                            e.preventDefault();
+                            $(this).summernote('insertText', clipboard.getData('Text'));
+                        }
+                    }
+                });
+                // Summernote hides the textarea; validate through its visible editor instead.
+                editor.removeAttr('required');
+                editor.closest('form').on('submit', function (e) {
+                    if (editor.summernote('isEmpty')) {
+                        e.preventDefault();
+                        alert('กรุณากรอกเนื้อหาบทความ');
+                        editor.summernote('focus');
+                    }
+                });
+            });
+        </script>
+    @endif
 </body>
 
 </html>

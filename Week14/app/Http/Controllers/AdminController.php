@@ -44,6 +44,7 @@ class AdminController extends Controller
             ],
         );
 
+        $data['content'] = \App\Support\BlogContent::storeImages($data['content']);
         $blog->update($data);
 
         return redirect('/author/blog');
@@ -75,6 +76,7 @@ class AdminController extends Controller
             ],
         );
 
+        $data['content'] = \App\Support\BlogContent::storeImages($data['content']);
         Blog::create($data);
 
         return redirect('/author/blog');
