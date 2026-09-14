@@ -115,6 +115,16 @@
                     placeholder: 'เขียนเนื้อหาบทความที่นี่...',
                     tabsize: 2,
                     height: 250,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'italic', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
+                    ],
+                    styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'blockquote'],
                     // Keep dialogs above the backdrop, outside the theme's filtered container.
                     dialogsInBody: true,
                     callbacks: {
