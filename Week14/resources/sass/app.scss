@@ -1,0 +1,137 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+:root {
+    --pink-50: #fff8fb;
+    --pink-100: #ffe8f1;
+    --pink-200: #ffd1e2;
+    --pink-300: #f8b6ce;
+    --pink-500: #e98bad;
+    --plum: #765366;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 8% 15%, rgba(255, 204, 225, .65) 0 7%, transparent 22%),
+        radial-gradient(circle at 92% 85%, rgba(220, 198, 239, .55) 0 8%, transparent 24%),
+        linear-gradient(135deg, #fff8fb 0%, #ffeaf3 48%, #f7edff 100%);
+    background-attachment: fixed;
+}
+
+.navbar {
+    // Keep the user menu above content that creates its own stacking context.
+    z-index: $zindex-dropdown;
+    background: linear-gradient(100deg, rgba(255, 240, 247, .96), rgba(250, 225, 240, .96), rgba(239, 226, 250, .96)) !important;
+    border-bottom: 1px solid rgba(233, 139, 173, .25);
+    backdrop-filter: blur(12px);
+}
+
+.navbar-brand {
+    color: var(--plum) !important;
+    font-weight: 800;
+    letter-spacing: .02em;
+}
+
+.navbar-brand::before {
+    content: "♡";
+    margin-right: .4rem;
+    color: var(--pink-500);
+}
+
+.nav-link {
+    color: #875f75 !important;
+    border-radius: 999px;
+    transition: all .2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #704559 !important;
+    background: rgba(255, 255, 255, .7);
+}
+
+main > .container {
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    background: rgba(255, 255, 255, .82);
+    border: 1px solid rgba(233, 139, 173, .22);
+    border-radius: 24px;
+    box-shadow: 0 18px 50px rgba(168, 91, 126, .12);
+    backdrop-filter: blur(8px);
+}
+
+h1, h2, h3, h4, h5,
+.card-header {
+    color: var(--plum);
+}
+
+.card,
+.dropdown-menu {
+    border: 1px solid var(--pink-200);
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(179, 100, 136, .1);
+    overflow: hidden;
+}
+
+.card-header,
+.table-info,
+.table thead {
+    background: linear-gradient(90deg, #ffe7f0, #f3e7fb) !important;
+}
+
+.form-control,
+.form-select {
+    border-color: var(--pink-200);
+    border-radius: 12px;
+    background-color: #fffbfd;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--pink-500);
+    box-shadow: 0 0 0 .2rem rgba(233, 139, 173, .18);
+}
+
+.btn {
+    border-radius: 999px;
+    font-weight: 700;
+    box-shadow: 0 5px 14px rgba(153, 83, 115, .12);
+}
+
+.btn-primary,
+.btn-dark,
+.btn-success {
+    color: #fff;
+    border-color: transparent;
+    background: linear-gradient(135deg, #ee91b3, #cc91c5);
+}
+
+.btn-primary:hover,
+.btn-dark:hover,
+.btn-success:hover {
+    border-color: transparent;
+    background: linear-gradient(135deg, #dc789e, #b979b0);
+    transform: translateY(-1px);
+}
+
+.page-link {
+    color: #bd6d91;
+    border-color: var(--pink-200);
+}
+
+.page-item.active .page-link {
+    border-color: var(--pink-500);
+    background: linear-gradient(135deg, #ee91b3, #cc91c5);
+}
+
+@media (max-width: 767.98px) {
+    main > .container {
+        border-radius: 18px;
+    }
+}
